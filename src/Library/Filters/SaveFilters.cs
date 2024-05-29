@@ -5,30 +5,19 @@ using SixLabors.ImageSharp.PixelFormats;
 
 namespace CompAndDel.Filters
 {
-    public class SaveFilter : IFilter.Filter(IPicture)
+    public class SaveFilter : IFilter
     {
         private PictureProvider provider;
+        public string path;
+    public SaveFilter(PictureProvider Provider, string Path)
+    {
 
- 
 
-        public string GeneratePath (string path)
-        {
-            Picture picture = new Picture(1, 1);
-            using (var image = Image.Load<Rgba32>(path))
-            {
-                picture.Resize(image.Width, image.Height);
-                for (int h = 0; h < image.Height; h++)
-                {
-                    for (int w = 0; w <image.Width; w++)
-                    {
-                        picture.SetColor(w, h, System.Drawing.Color.FromArgb(image[w, h].A, image[w, h].R, image[w, h].G, image[w, h].B));
-                    }
-                }
-            }
-            return path;
-        }
+
+    }
+
         
-        public IPicture Filter(IPicture image, string path)
+        public IPicture Filter(IPicture image)
         {
             provider = new PictureProvider();
             provider.SavePicture(image,path);

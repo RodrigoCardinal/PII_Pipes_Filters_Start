@@ -48,24 +48,19 @@ namespace CompAndDel
             IPipe pipeSerial = new PipeSerial(filterNegative, pipeNull);
             IFilter filterGreyscale = new FilterGreyscale();
             IPipe pipeSerial2 = new PipeSerial(filterGreyscale, pipeSerial);
-            PictureProvider provider1 = new PictureProvider();
 
-            IPicture picture = provider1.GetPicture(@"beer.jpg");
-            picture = pipeSerial2.Send(picture);       
-            provider1.SavePicture(picture, @"beer2.jpg");
+            PictureProvider provider = new PictureProvider();
+
+
+            IPicture picture = provider.GetPicture(@"beer.jpg");
+
+            picture = pipeSerial2.Send(picture); 
+
+            provider.SavePicture(picture, @"beer2.jpg");
 
             
-            PictureProvider provider2 = new PictureProvider();
-            IPicture pic = provider2.SavePicture(picture,@"luke.jpg");
-
-           // SaveFilter provider2 = new SaveFilter();
-            //IPicture pic = provider2.SavePicture(picture,@"luke.jpg");
-            
-
-
-            //PictureProvider provider2 = new PictureProvider();
-            //IPicture pic = provider2.SavePicture(picture,@"luke.jpg");
-
+            PictureProvider p = new PictureProvider();
+            IPicture pic = p.SavePicture(@"luke.jpg",);
 
 
 
