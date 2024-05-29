@@ -10,7 +10,11 @@ namespace CompAndDel
         {
 
             // Ejercicio 1 Hecho
+
             //Tener en cuenta que para realizar el ejercicio debiamos empezar desde el final del diagrama (PipeNull)
+
+            //En el diagrama mostraba que como de una clase le pasaba a otra, pero no tenia sentido hacer que, por ejemplo clase1 le manda la imagen a la clase2 pero la clase dos no estaba creada como conectar una clase con otra que no existia
+
 
             /*
             IPipe pipeNull = new PipeNull(); //Creamos el pipeNull 
@@ -25,12 +29,16 @@ namespace CompAndDel
 
             PictureProvider provider = new PictureProvider(); //Creamos provider
 
-            IPicture picture = provider.GetPicture(@"beer.jpg");
+            IPicture picture = provider.GetPicture(@"beer.jpg"); //Toma la imagen
 
             picture = pipeSerial2.Send(picture);     
 
-            provider.SavePicture(picture, @"beer2.jpg");
+            provider.SavePicture(picture, @"beer2.jpg");// La guarda y la devuelve con todos los cambios de los Filter
             */
+
+
+
+
 
 
             // Ejercicio 2 
@@ -40,10 +48,26 @@ namespace CompAndDel
             IPipe pipeSerial = new PipeSerial(filterNegative, pipeNull);
             IFilter filterGreyscale = new FilterGreyscale();
             IPipe pipeSerial2 = new PipeSerial(filterGreyscale, pipeSerial);
-            PictureProvider provider = new PictureProvider();
-            IPicture picture = provider.GetPicture(@"beer.jpg");
+            PictureProvider provider1 = new PictureProvider();
+
+            IPicture picture = provider1.GetPicture(@"beer.jpg");
             picture = pipeSerial2.Send(picture);       
-            provider.SavePicture(picture, @"beer2.jpg");
+            provider1.SavePicture(picture, @"beer2.jpg");
+
+            
+            PictureProvider provider2 = new PictureProvider();
+            IPicture pic = provider2.SavePicture(picture,@"luke.jpg");
+
+           // SaveFilter provider2 = new SaveFilter();
+            //IPicture pic = provider2.SavePicture(picture,@"luke.jpg");
+            
+
+
+            //PictureProvider provider2 = new PictureProvider();
+            //IPicture pic = provider2.SavePicture(picture,@"luke.jpg");
+
+
+
 
 
 
