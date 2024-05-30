@@ -10,6 +10,7 @@ namespace CompAndDel.Pipes
     {
         protected IFilter filtro;
         protected IPipe nextPipe;
+        private TwitterMessage twitterMessage = new TwitterMessage();
         
         /// <summary>
         /// La cañería recibe una imagen, le aplica un filtro y la envía a la siguiente cañería

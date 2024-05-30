@@ -42,6 +42,24 @@ namespace CompAndDel
 
 
             // Ejercicio 2 
+            /*
+            IPipe pipeNull = new PipeNull();
+            IFilter filterNegative = new FilterNegative();
+            
+            IFilter saveFilter = new SaveFilter( @"luke2.jpg");
+
+            IPipe pipeSerial3 = new PipeSerial(saveFilter, pipeNull);
+            
+            IPipe pipeSerial = new PipeSerial(filterNegative,pipeSerial3);
+            IFilter filterGreyscale = new FilterGreyscale();
+            IPipe pipeSerial2 = new PipeSerial(filterGreyscale, pipeSerial);
+
+
+            PictureProvider p = new PictureProvider();
+            IPicture pic = p.GetPicture(@"luke.jpg");
+
+            pipeSerial2.Send(pic);
+            */
 
             IPipe pipeNull = new PipeNull();
             IFilter filterNegative = new FilterNegative();
@@ -59,6 +77,8 @@ namespace CompAndDel
             IPicture pic = p.GetPicture(@"luke.jpg");
 
             pipeSerial2.Send(pic);
+
+
 
 
         }
