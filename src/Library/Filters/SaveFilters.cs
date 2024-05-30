@@ -9,18 +9,18 @@ namespace CompAndDel.Filters
     {
         private PictureProvider provider;
         public string path;
-    public SaveFilter(PictureProvider Provider, string Path)
+    public SaveFilter( string Path)
     {
+        this.provider = new PictureProvider();
+        this.path = Path;
 
-
-
+        return;
     }
 
-        
         public IPicture Filter(IPicture image)
         {
             provider = new PictureProvider();
-            provider.SavePicture(image,path);
+            provider.SavePicture(image, path);
 
             return image;
         }
